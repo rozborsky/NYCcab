@@ -4,8 +4,11 @@
 
 <script>
     var map;
-    var marker;
+    var startMarker;
+    var stopMarker;
     var startTime;
+
+var f = 0.01;
 
     function initialize() {
         document.getElementById('latitude').value='';
@@ -16,7 +19,7 @@
         };
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         map.addListener('click', function(event) {
-            addMarker(event.latLng);
+            addStartMarker(event.latLng);
         });
     }
 
@@ -25,21 +28,37 @@
           new google.maps.Point(0,0),
           new google.maps.Point(0, 32));
 
-    function addMarker(location) {
-        if(marker != null) {
-            marker.setMap(null);
+    function addStartMarker(location) {
+        if(startMarker != null) {
+            startMarker.setMap(null);
         }
 
-        marker = new google.maps.Marker({
+        startMarker = new google.maps.Marker({
             position: location,
-            icon: image,
             map: map,
 
         });
-        document.getElementById('longitude').value=marker.getPosition().lng().toFixed(3);
-        document.getElementById('latitude').value=marker.getPosition().lat().toFixed(3);
+
+        addStopMarker(location);
+        document.getElementById('longitude').value=startMarker.getPosition().lng().toFixed(3);
+        document.getElementById('latitude').value=startMarker.getPosition().lat().toFixed(3);
+    }
+
+    function addStopMarker(location) {
+        if(stopMarker != null) {
+            stopMarker.setMap(null);
+        }
+        f +=0.01;
+        stopMarker = new google.maps.Circle({
+                           strokeColor: '#FF0000',
+                           strokeOpacity: 0.3,
+                           strokeWeight: 1,
+                           fillColor: '#FF0000',
+                           fillOpacity: 0.35,
+                           map: map,
+                           center: new google.maps.LatLng(40.72 + f, -74.1),
+                           radius: 2000
+        });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-
-
 </script>

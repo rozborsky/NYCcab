@@ -118,7 +118,6 @@ public class DAOpostgreSQL implements DAO{
         Session session = sessionFactory.openSession();
         Query query = session.createQuery("select count(*) from TaxiRide");//todo tablename properties-----------
         Long numberRows = ((Long) query.iterate().next()).longValue();
-
         if(numberRows == 0){
             if(!(new File("trip_data.csv")).exists()) {
                 copyDataFromCsv.make("trip_data_1.csv", "trip_data.csv", 100000);
