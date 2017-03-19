@@ -1,0 +1,29 @@
+CREATE DATABASE "NYCcab"
+  WITH ENCODING='UTF8'
+       CONNECTION LIMIT=-1;
+
+
+CREATE TABLE public.taxi_ride
+(
+  id integer NOT NULL,
+  dropoff_datetime character varying(255),
+  dropoff_latitude double precision,
+  dropoff_longtitude double precision,
+  hack_license character varying(255),
+  medallion character varying(255),
+  passenger_count smallint,
+  pickup_datetime character varying(255),
+  pickup_latitude double precision,
+  pickup_longtitude double precision,
+  rate_code smallint,
+  store_and_fwd_flag character(1),
+  trip_distanse double precision,
+  trip_time_in_secs smallint,
+  vendor_id character varying(255),
+  CONSTRAINT taxi_ride_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.taxi_ride
+  OWNER TO postgres;
