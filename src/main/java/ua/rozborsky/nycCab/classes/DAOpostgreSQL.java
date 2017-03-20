@@ -1,9 +1,7 @@
 package ua.rozborsky.nycCab.classes;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionException;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.rozborsky.nycCab.interfaces.DAO;
@@ -124,5 +122,22 @@ public class DAOpostgreSQL implements DAO{
             }
             writeTripsToDB("trip_data.csv"); //todo filename properties-----------
         }
+    }
+
+    public List<TaxiRide> getTrips(double pickupLatitude, double pickupLongtitude){
+        List<TaxiRide> categories = null;
+
+        try(Session session = sessionFactory.openSession()){
+            Criteria criteria = session.createCriteria(TaxiRide.class);
+            criteria.add(Restrictions.between(
+                    "pickupLatitude", pickupLatitude - 0.05, pickupLatitude + 0.05));
+            criteria.add(Restrictions.between(
+                    "pickupLongtitude", pickupLongtitude - 0.05, pickupLongtitude + 0.05));
+
+            categories = criteria.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return categories;
     }
 }

@@ -15,7 +15,6 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
-
     <mapping class="ua.rozborsky.nycCab.classes.TaxiRide"/>
 
 </session-factory>

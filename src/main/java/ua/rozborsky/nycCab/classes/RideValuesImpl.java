@@ -1,17 +1,35 @@
 package ua.rozborsky.nycCab.classes;
 
 import org.springframework.stereotype.Component;
-import ua.rozborsky.nycCab.interfaces.RideValues;
 
 /**
  * Created by roman on 18.03.2017.
  */
 @Component
-public class RideValuesImpl implements RideValues{
+public class RideValuesImpl {
     private int start;
     private int finish;
-    private double latitude;
-    private double longitude;
+    private double pickupLatitude;
+    private double pickupLongtitude;
+    private double dropoffLatitude;
+    private double dropoffLongtitude;
+
+
+    public double getPickupLatitude() {
+        return pickupLatitude;
+    }
+
+    public void setPickupLatitude(double pickupLatitude) {
+        this.pickupLatitude = pickupLatitude;
+    }
+
+    public double getPickupLongtitude() {
+        return pickupLongtitude;
+    }
+
+    public void setPickupLongtitude(double pickupLongtitude) {
+        this.pickupLongtitude = pickupLongtitude;
+    }
 
     public int getStart() {
         return start;
@@ -29,19 +47,19 @@ public class RideValuesImpl implements RideValues{
         this.finish = finish;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public double getDropoffLatitude() {
+        return dropoffLatitude;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setDropoffLatitude(double dropoffLatitude) {
+        this.dropoffLatitude = dropoffLatitude;
     }
 
-    public double getLongitude() {
-        return longitude;
+    public double getDropoffLongtitude() {
+        return dropoffLongtitude;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setDropoffLongtitude(double dropoffLongtitude) {
+        this.dropoffLongtitude = dropoffLongtitude;
     }
 }
