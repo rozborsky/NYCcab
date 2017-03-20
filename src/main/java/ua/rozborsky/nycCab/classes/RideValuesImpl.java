@@ -1,12 +1,13 @@
 package ua.rozborsky.nycCab.classes;
 
 import org.springframework.stereotype.Component;
+import ua.rozborsky.nycCab.interfaces.RideValues;
 
 /**
  * Created by roman on 18.03.2017.
  */
 @Component
-public class RideValuesImpl {
+public class RideValuesImpl implements RideValues{
     private int start;
     private int finish;
     private double pickupLatitude;
