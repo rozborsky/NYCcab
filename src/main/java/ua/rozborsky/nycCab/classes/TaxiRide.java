@@ -179,4 +179,9 @@ public class TaxiRide {
     public void setDropoffLatitude(double dropoffLatitude) {
         this.dropoffLatitude = dropoffLatitude;
     }
+
+    public int getHour() throws NumberFormatException{
+        String time = pickupDatetime.split(" ")[1];
+        return Integer.valueOf(time.split(":")[0]);
+    }
 }

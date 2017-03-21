@@ -9,6 +9,7 @@
     var startTime;
 
     function initialize() {
+        document.getElementById('hour').value=${rideValues.getHour()};
         var mapOptions = {
             zoom: 12,
             center: new google.maps.LatLng(40.71, -74)

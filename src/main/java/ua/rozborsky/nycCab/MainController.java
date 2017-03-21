@@ -26,15 +26,15 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView setCoordinates(@ModelAttribute("rideValues") RideValuesImpl rideValuesImpl) {dao.fillTable();
-        List listTrips = dao.getTrips(rideValuesImpl.getPickupLatitude(), rideValuesImpl.getPickupLongtitude());
+        List <TaxiRide>listTrips = dao.getTrips(rideValuesImpl.getPickupLatitude(), rideValuesImpl.getPickupLongtitude(), rideValuesImpl.getHour());
         dropoffCoordinates(listTrips, rideValuesImpl);
 
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("rideValues", rideValuesImpl);
-        modelAndView.addObject("rideValues", rideValuesImpl);
         int[] hours = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
-        modelAndView.addObject("rideValues", rideValuesImpl);
         modelAndView.addObject("hours", hours);
+        modelAndView.addObject("listTrips", listTrips);
+
         return modelAndView;
     }
 

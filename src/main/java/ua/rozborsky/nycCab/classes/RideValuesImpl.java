@@ -8,12 +8,21 @@ import ua.rozborsky.nycCab.interfaces.RideValues;
  */
 @Component
 public class RideValuesImpl implements RideValues{
+    private boolean start = true;
     private int hour;
     private double pickupLatitude;
     private double pickupLongtitude;
     private double dropoffLatitude;
     private double dropoffLongtitude;
 
+
+    public boolean isStart() {
+        return start;
+    }
+
+    public void setStart(boolean start) {
+        this.start = start;
+    }
 
     public double getPickupLatitude() {
         return pickupLatitude;
