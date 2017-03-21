@@ -9,13 +9,19 @@
     <div class="col-2">
         <form:form  action="/NYCcab/" method="get" commandName="rideValues">
 
-            </br>height - y<form:input type="text" id = "pickupLatitude" path="pickupLatitude"/>
-            width - x<form:input type="text" id = "pickupLongtitude" path="pickupLongtitude"/>
-            </br>height - y<form:input type="text" id = "dropoffLatitude" path="dropoffLatitude"/>
-            width - x<form:input type="text" id = "dropoffLongtitude" path="dropoffLongtitude"/>
+            <form:select path="hour">
+               <form:options items="${hours}" />
+            </form:select>
+
+            <form:input type="hidden" id = "pickupLatitude" path="pickupLatitude"/>
+            <form:input type="hidden" id = "pickupLongtitude" path="pickupLongtitude"/>
+            <form:input type="hidden" id = "dropoffLatitude" path="dropoffLatitude"/>
+            <form:input type="hidden" id = "dropoffLongtitude" path="dropoffLongtitude"/>
+
+
+
             <input type="submit" value="go">
         </form:form>
-
     </div>
 </div>
 <jsp:include page="footer.jsp" />

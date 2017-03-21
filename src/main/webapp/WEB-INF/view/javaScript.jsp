@@ -9,11 +9,6 @@
     var startTime;
 
     function initialize() {
-        document.getElementById('pickupLatitude').value=${rideValues.getPickupLatitude()};
-        document.getElementById('pickupLongtitude').value=${rideValues.getPickupLongtitude()};
-        document.getElementById('dropoffLatitude').value=${rideValues.getDropoffLatitude()};
-        document.getElementById('dropoffLongtitude').value=${rideValues.getDropoffLongtitude()};
-
         var mapOptions = {
             zoom: 12,
             center: new google.maps.LatLng(40.71, -74)
@@ -38,7 +33,8 @@
 
         startMarker = new google.maps.Marker({
             position: location,
-            map: map
+            map: map,
+            label: "START TRIP"
         });
 
         addStopMarker();
@@ -49,7 +45,8 @@
     function addStartMarker(location) {
         startMarker = new google.maps.Marker({
             position: new google.maps.LatLng(${rideValues.getPickupLatitude()}, ${rideValues.getPickupLongtitude()}),
-            map: map
+            map: map,
+            label: "START TRIP"
         });
 
         document.getElementById('pickupLongtitude').value=startMarker.getPosition().lng().toFixed(3);
@@ -68,7 +65,7 @@
                            fillOpacity: 0.35,
                            map: map,
                            center: new google.maps.LatLng(${rideValues.getDropoffLatitude()}, ${rideValues.getDropoffLongtitude()}),
-                           radius: 2000,
+                           radius: 2000
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize);

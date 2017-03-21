@@ -12,13 +12,9 @@ public interface RideValues {
 
     void setPickupLongtitude(double pickupLongtitude);
 
-    int getStart();
+    int getHour();
 
-    void setStart(int start);
-
-    int getFinish();
-
-    void setFinish(int finish);
+    void setHour(int hour);
 
     double getDropoffLatitude();
 

@@ -8,8 +8,7 @@ import ua.rozborsky.nycCab.interfaces.RideValues;
  */
 @Component
 public class RideValuesImpl implements RideValues{
-    private int start;
-    private int finish;
+    private int hour;
     private double pickupLatitude;
     private double pickupLongtitude;
     private double dropoffLatitude;
@@ -32,20 +31,12 @@ public class RideValuesImpl implements RideValues{
         this.pickupLongtitude = pickupLongtitude;
     }
 
-    public int getStart() {
-        return start;
+    public int getHour() {
+        return hour;
     }
 
-    public void setStart(int start) {
-        this.start = start;
-    }
-
-    public int getFinish() {
-        return finish;
-    }
-
-    public void setFinish(int finish) {
-        this.finish = finish;
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 
     public double getDropoffLatitude() {

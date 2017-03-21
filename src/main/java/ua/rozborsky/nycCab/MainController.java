@@ -28,8 +28,13 @@ public class MainController {
     public ModelAndView setCoordinates(@ModelAttribute("rideValues") RideValuesImpl rideValuesImpl) {dao.fillTable();
         List listTrips = dao.getTrips(rideValuesImpl.getPickupLatitude(), rideValuesImpl.getPickupLongtitude());
         dropoffCoordinates(listTrips, rideValuesImpl);
-        ModelAndView modelAndView = new ModelAndView("home", "rideValues", rideValuesImpl);
 
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("rideValues", rideValuesImpl);
+        modelAndView.addObject("rideValues", rideValuesImpl);
+        int[] hours = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+        modelAndView.addObject("rideValues", rideValuesImpl);
+        modelAndView.addObject("hours", hours);
         return modelAndView;
     }
 
@@ -52,7 +57,6 @@ public class MainController {
 
         latitude /= j;
         longtitude /= j;
-
         try{
             latitude = new BigDecimal(latitude).setScale(3, RoundingMode.UP).doubleValue();
             longtitude = new BigDecimal(longtitude).setScale(3, RoundingMode.UP).doubleValue();
