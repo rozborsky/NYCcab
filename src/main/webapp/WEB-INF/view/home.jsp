@@ -6,8 +6,8 @@
     <div class="col-9" id="map-canvas"></div>
     <div class="col-3">
         <form:form  action="/NYCcab/" method="get" commandName="rideValues">
-            <form:radiobutton id="isStart" path="start" value="true" label="start"/>
-            <form:radiobutton id="isStart" path="start" value="false" label="finish" />
+            <form:radiobutton path="start" value="true" label="start" onclick="startTrip()"/>
+            <form:radiobutton path="start" value="false" label="finish" onclick="finishTrip()"/>
             </br>
 
             <form:select id="hour" path="hour" label="time" >
@@ -21,6 +21,7 @@
 
             <input type="submit" value="get coordinates">
         </form:form>
+
         <c:choose>
             <c:when test="${rideValues.isStart() == true}">
                <jsp:include page="startResult.jsp" />
@@ -29,7 +30,6 @@
                <jsp:include page="finishResult.jsp" />
             </c:otherwise>
         </c:choose>
-
     </div>
 </div>
 <jsp:include page="footer.jsp" />

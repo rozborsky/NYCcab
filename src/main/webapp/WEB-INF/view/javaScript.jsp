@@ -10,23 +10,34 @@
 
     function initialize() {
         document.getElementById('hour').value=${rideValues.getHour()};
+
         var mapOptions = {
             zoom: 12,
             center: new google.maps.LatLng(40.71, -74)
         };
-
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        if(${rideValues.getPickupLatitude()} != 0 && ${rideValues.getPickupLongtitude()} != 0) {
-            addStartMarker();
-            if(${rideValues.getDropoffLatitude()} != 0 && ${rideValues.getDropoffLongtitude()} != 0) {
-            addStopMarker();
+
+        if(${rideValues.isStart()}){
+            if(${rideValues.getPickupLatitude()} != 0 && ${rideValues.getPickupLongtitude()} != 0) {
+                addStartMarker();
+                if(${rideValues.getDropoffLatitude()} != 0 && ${rideValues.getDropoffLongtitude()} != 0) {
+                addStopMarker();
+                }
             }
+            map.addListener('click', function(event) {
+                moveStartMarker(event.latLng);
+            });
+        } else {
+
         }
-        map.addListener('click', function(event) {
-            moveStartMarker(event.latLng);
-        });
     }
 
+function startTrip() {
+    alert("start");
+}
+function finishTrip() {
+    alert("stop");
+}
     function moveStartMarker(location) {
         if(startMarker != null) {
             startMarker.setMap(null);
