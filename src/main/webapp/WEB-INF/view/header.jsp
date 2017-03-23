@@ -17,6 +17,3 @@
 	</head>
 	<body>
 		<div class="container" id="mainLayout">
-		    <div class="col-12" id="header">
-		       <h1>NYC cab</h1>
-		    </div>

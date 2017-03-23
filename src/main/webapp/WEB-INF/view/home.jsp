@@ -5,7 +5,11 @@
 <div class="row">
     <div class="col-9" id="map-canvas"></div>
     <div class="col-3">
+        <div class="col-12" id="header">
+           <h1>NYC cab</h1>
+        </div>
         <form:form  action="/NYCcab/" method="get" commandName="rideValues">
+
             <form:radiobutton path="start" value="true" label="start" onclick="startTrip()"/>
             <form:radiobutton path="start" value="false" label="finish" onclick="finishTrip()"/>
             </br>
@@ -29,7 +33,8 @@
             <c:otherwise>
                <jsp:include page="finishResult.jsp" />
             </c:otherwise>
-        </c:choose>
+        </c:choose></br>
+
     </div>
 </div>
 <jsp:include page="footer.jsp" />

@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface DAO {
     void fillTable();
-    List<TaxiRide> getTrips(double pickupLatitude, double pickupLongtitude, int hour);
+    List<TaxiRide> getTripsStart(double pickupLatitude, double pickupLongtitude, int hour);
+    List<TaxiRide> getTripsFinish(double pickupLatitude, double pickupLongtitude, int hour);
 }

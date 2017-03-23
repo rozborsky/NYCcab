@@ -124,15 +124,33 @@ public class DAOpostgreSQL implements DAO{
         }
     }
 
-    public List<TaxiRide> getTrips(double pickupLatitude, double pickupLongtitude, int hour){
+    public List<TaxiRide> getTripsStart(double latitude, double longtitude, int hour){
         List<TaxiRide> trips = null;
 
         try(Session session = sessionFactory.openSession()){
             Criteria criteria = session.createCriteria(TaxiRide.class);
             criteria.add(Restrictions.between(
-                    "pickupLatitude", pickupLatitude - 0.05, pickupLatitude + 0.05));
+                    "pickupLatitude", latitude - 0.05, latitude + 0.05));
             criteria.add(Restrictions.between(
-                    "pickupLongtitude", pickupLongtitude - 0.05, pickupLongtitude + 0.05));
+                    "pickupLongtitude", longtitude - 0.05, longtitude + 0.05));
+
+            trips = criteria.list();
+            trips = filterBuHour(trips, hour);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return trips;
+    }
+
+    public List<TaxiRide> getTripsFinish(double latitude, double longtitude, int hour){
+        List<TaxiRide> trips = null;
+
+        try(Session session = sessionFactory.openSession()){
+            Criteria criteria = session.createCriteria(TaxiRide.class);
+            criteria.add(Restrictions.between(
+                    "dropoffLatitude", latitude - 0.05, latitude + 0.05));
+            criteria.add(Restrictions.between(
+                    "dropoffLongtitude", longtitude - 0.05, longtitude + 0.05));
 
             trips = criteria.list();
             trips = filterBuHour(trips, hour);

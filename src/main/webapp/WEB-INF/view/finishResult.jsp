@@ -6,7 +6,12 @@
     </c:when>
     <c:otherwise>
         it was ${listTrips.size()} trips in ${rideValues.getHour()} o'clock to places with coordinates
-        ${rideValues.getDropoffLongtitude()} - ${rideValues.getDropoffLatitude()}
+        ${rideValues.getDropoffLongtitude()} - ${rideValues.getDropoffLatitude()}</br>
+         </br>
+         from brooklyn - <span id="brooklyn"></span>%</br>
+         from staten island - <span id="statenIsland"></span>%</br>
+         from queens - <span id="queens"></span>%</br>
+         from bronx - <span id="bronx"></span>%</br>
+         from manhattan - <span id="manhattan"></span>%</br>
     </c:otherwise>
 </c:choose>
-rideValuesImpl

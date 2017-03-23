@@ -11,7 +11,7 @@ body{
 #mainLayout{
     background-color: #F9FFF1;
     width: 80%;
-    min-height: 90%;
+    min-height: 95%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -30,5 +30,5 @@ H1{
 }
 
 #map-canvas{
-    height: 80%;
+    height: 95%;
 }
